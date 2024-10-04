@@ -1,0 +1,43 @@
+class Solution{
+	public int largestMinDist(int arr[], int n, int k){
+        //Write your code here
+        Arrays.sort(arr);
+
+        Arrays.sort(arr);
+        int start=1;
+        int end=arr[n-1];
+        int maxMinimumValue=-1;
+        while(start<=end){
+            int mid=end+(start-end)/2;
+            if(maxMinimumDistance(mid,arr,k,n)){
+                start=mid+1;
+                maxMinimumValue=mid;
+            }else{
+                end=mid-1;
+            }
+        }
+        return maxMinimumValue;
+    }
+    static boolean maxMinimumDistance(int distance,int arr[],int k,int n){
+        int totalPlacedElement=1;
+        int lastPlacedElement=arr[0];
+        for(int i=1;i<=arr.length-1;i++){
+            int currentDistance=arr[i]-lastPlacedElement;
+            if(currentDistance>=distance){
+                totalPlacedElement++;
+                lastPlacedElement=arr[i];
+            if(totalPlacedElement==k){
+            return true;
+            }
+           
+        }
+            
+        }
+        return false;
+        
+        
+    
+        
+        
+    }
+}
