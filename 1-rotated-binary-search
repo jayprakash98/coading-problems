@@ -1,0 +1,35 @@
+
+class Solution {
+    int search(int[] arr, int key) {
+        // Complete this function
+        int left=0;
+        int right=arr.length-1;
+        
+        
+        int ans=binarySearch(arr,left,right,key);
+        return ans;
+    }
+    static int binarySearch(int[] arr, int left, int right ,int key){
+        if(left>right){
+            return -1;
+            
+        }
+        int mid=(left+right)/2;
+        if(arr[mid]==key){
+            return mid;
+        }
+        if(arr[left]<=arr[mid]){
+            if(key>=arr[left] && key<=arr[mid]){
+                return binarySearch(arr,left,mid-1,key);
+            }else{
+                return binarySearch(arr,mid+1,right,key);
+            }
+        }else{
+            if(key>=arr[mid] && key<=arr[right]){
+                return binarySearch(arr,mid+1,right,key);
+            }else{
+                return binarySearch(arr,left,mid-1,key);
+            }
+        }
+    }
+}
